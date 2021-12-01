@@ -1,0 +1,120 @@
+<mat-card class= "example-card">
+  <mat-card-title-group>
+    <mat-card-title>Your Details:</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+
+  <form  (ngSubmit)= "onsubmit()" class= "form" #formdetails= "ngForm"  >
+   <div class= "form-field">
+      <label for= "name">Enter your name:</label>
+      <mat-form-field appearance="outline">
+        <mat-label> name </mat-label>
+        <input matInput  type= "text" id="name" name= "name" #name= "ngModel" formcontolname="name1"  required pattern= "[a-z ]*" [(ngModel)]= "customer.name">
+        <mat-error *ngIf="name1.invalid">{{getErrorMessage2()}}</mat-error>
+      </mat-form-field>
+   </div>
+   <div class= "form-field">
+      <label for= "city">Enter your city:</label>
+      <mat-form-field appearance="outline" >
+        <mat-label>city</mat-label>
+        <input matInput type= "text"  id= "city" name= "city" #city= "ngModel" formcontrolname="city1"  required pattern= "[a-z ]*" [(ngModel)]= "customer.city">
+        <mat-error *ngIf="city1.invalid">{{getErrorMessage3()}}</mat-error>
+      </mat-form-field>
+  </div>
+
+  <div  class= "form-field">
+      <label for= "street">Enter your street:</label>
+      <mat-form-field appearance="outline">
+        <mat-label>street</mat-label>
+        <input matInput type= "text"  id= "street" name= "street" #street= "ngModel" formcontrolname="street1" required pattern= "[a-z ]*" [(ngModel)]= "customer.street">
+        <mat-error *ngIf="street1.invalid">{{getErrorMessage4()}}</mat-error>
+        </mat-form-field>
+  </div>
+
+  <div class= "form-field">
+      <label for= "country">Enter your country:</label>
+      <mat-form-field appearance="outline">
+        <mat-label>country</mat-label>
+        <input matInput type= "text"  id= "country" name= "country" formcontrolname="country1" #country= "ngModel" required pattern= "[a-z ]*" [(ngModel)]= "customer.country">
+        <mat-error *ngIf="country1.invalid">{{getErrorMessage5()}}</mat-error>
+         </mat-form-field>
+  </div>
+  <div class= "form-field" >
+    <label for= "Gender">Enter your Gender:</label> 
+    <mat-form-field appearance="outline">
+      <mat-label>Gender</mat-label>
+      <mat-select  [(ngModel)]= "customer.Gender" formcontrolname="gender1" id= "Gender" name= "Gender" #gender= "ngModel" required  >
+          <mat-option>None</mat-option>
+        <mat-option *ngFor= "let state of states; let i = index" [value]= "i"  > {{state}}</mat-option   >
+      </mat-select>
+      <mat-error *ngIf="gender1.invalid">{{getErrorMessage6()}}</mat-error>
+    </mat-form-field> 
+  </div>
+  <div class= "form-field">
+  <label for= "email">Enter your Email:</label>
+    <mat-form-field class= "example-form-field" appearance="outline" >
+      <mat-label> email</mat-label>
+      <input matInput placeholder="pat@example.com"  #email= "ngModel" formcontrolname="email" required email [(ngModel)]= "customer.email" name= "email" id= "email">
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class= "form-field">
+    <label for= "seats">Enter number of seats:</label>
+    <mat-form-field appearance="outline">
+      <mat-label>num of seats</mat-label>
+      <mat-select [(ngModel)]= "customer.amount_seat" formcontrolname="seat1" id= "seats" name= "seats" required #seat= "ngModel"  >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let i of seats" [value]= "i" >{{i}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="seat1.invalid">{{getErrorMessage8()}}</mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class= "form-field">
+    <label for= "Motor">Enter Motor type:</label>
+    <mat-form-field appearance="outline">
+      <mat-label>Motor</mat-label>
+      <mat-select [(ngModel)]= "customer.Motor" id= "Motor" formcontrolname="motor1" required name= "Motor" #motor= "ngModel" >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let motor of motors" [value]= "motor" > {{motor}}</mat-option   >
+      </mat-select>
+      <mat-error *ngIf="motor1.invalid">{{getErrorMessage7()}}</mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class= "form-field">
+    <label for= "mycolor">Enter color:</label>
+      <mat-form-field appearance="outline" >
+        <mat-label> color  </mat-label>
+        <input matInput type= "color" name="col" formcontrolname="color1"  id="col" [(ngModel)]="customer.favorite_color" required #color="ngModel"  >
+        <mat-error *ngIf="color1.invalid">{{getErrorMessage11()}}</mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class= "form-field" >
+  <label for= "Hobbies">Choose Hooby:</label>
+  <mat-form-field appearance="outline">
+    <mat-label>Hobbies</mat-label>
+    <mat-select [(ngModel)]= customer.Hobbies multiple formcontrolname="hobby1" id= "hobi" name= "hobi" required #hobby= "ngModel">
+      <mat-option *ngFor= "let topping of toppingList" [value]= "topping">{{topping}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="hobby1.invalid">{{getErrorMessage9()}}</mat-error>
+  </mat-form-field>
+  </div>
+  <div class= "form-field">
+    <label for= "date">Enter your date of birth:</label>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [max]='maxdate' [matDatepicker]="picker" formcontrolname="date1" required [(ngModel)]="customer.Birth_date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-error *ngIf="date1.invalid">{{getErrorMessage10()}}</mat-error>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color= "primary" type= "submit" class= "buttonsend"  [disabled]= "!formdetails.form.valid">send</button>
+  </form>
+
+
+</mat-card-content>
+</mat-card>
+<router-outlet></router-outlet> 

@@ -1,0 +1,22 @@
+
+.succesd{
+    width: 96vw;
+    height: 88vh;
+    margin-top: 7vh;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 0vh;
+    text-align: center;
+  }
+  .a{
+    text-align: center;
+    position: absolute;
+    left: 40vw;
+    top: 6vh;
+  }
+  
+  .img{
+    position: absolute;
+    left: 40vw;
+    top: 30vh;
+  }
