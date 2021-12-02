@@ -59,8 +59,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatListModule,
     RouterModule.forRoot(arrpath),
-    MatCardModule,MatFormFieldModule,NgxChartsModule,MatTableModule,ReactiveFormsModule,ChartsModule 
-    , MatTabsModule,MatToolbarModule,MatNativeDateModule
+    MatCardModule,
+    MatFormFieldModule,
+    NgxChartsModule,
+    MatTableModule,
+    ReactiveFormsModule,
+    ChartsModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatNativeDateModule
     
   ],
   
